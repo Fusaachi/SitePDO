@@ -1,26 +1,15 @@
 <?php
-// Inclusion de la connexion de la BDD
-require_once("conf.php");
 
 // Inclusion de la classe Eleve
 require_once("models/eleve.php");
 
-// Ecriture de la requête SQL dans une chaîne de caractères 
-$sql = "SELECT nom, prenom, date_de_naissance FROM eleves";
+// Appel de la méthode statique readAll() de notre classe Eleve, qui nous permet de charger la liste de tous les élèves
+$eleves = Eleve::readAll();
 
-// Préparation de la requête SQL par PDO
-$statement = $pdo->prepare($sql);
-
-// Exécution de la requête
-$statement->execute();
-
-// Récpération des résultats de la requête, sous forme de tableau associatif ici
-$eleves = $statement->fetchAll(PDO::FETCH_CLASS, "Eleve");
 // echo"<pre>";
 // var_dump($eleves);
 // echo "</pre>";
 ?>
-
 
 <?php
 include("inc/head.php");
